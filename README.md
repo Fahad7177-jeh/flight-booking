@@ -1,21 +1,76 @@
-<<<<<<< HEAD
-# React + Vite
+# Flight Booking Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive **Flight Booking web application** that allows users to search flights, select passengers, and manage their bookings easily. This project demonstrates the implementation of a real-world travel booking interface using modern web development technologies.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* Search flights between different locations
+* Select number of passengers
+* Book flights easily
+* View booked trips
+* Responsive design for desktop and mobile devices
 
-## React Compiler
+## Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* React
+* JavaScript
+* HTML5
+* CSS3
+* Vite
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# flight-booking
-A responsive Flight Booking web application that allows users to search flights, select passengers, and manage bookings. Built using React, JavaScript, HTML, and CSS with a component-based architecture and context management for authentication and booking data.
->>>>>>> 82c9d4e051fd29b5ad697c80e5bdde369930b4a1
+```
+flight-booking
+│
+├── public
+├── src
+│   ├── assets
+│   ├── components
+│   ├── context
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+│
+├── index.html
+├── package.json
+├── .gitignore
+└── README.md
+```
+
+## Installation
+
+Clone the repository:
+
+```
+git clone https://github.com/Fahad7177-jeh/flight-booking.git
+```
+
+Navigate to the project folder:
+
+```
+cd flight-booking
+```
+
+Install dependencies:
+
+```
+npm install
+```
+
+Run the development server:
+
+```
+npm run dev
+```
+
+## Future Improvements
+
+* Flight API integration
+* Payment gateway
+* User authentication system
+* Real-time flight availability
+
+## Author
+
+Fahad
