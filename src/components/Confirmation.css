@@ -1,0 +1,339 @@
+.confirmation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.success-icon-wrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.success-icon {
+  color: #10b981;
+  z-index: 2;
+  background: var(--color-bg-base);
+  border-radius: 50%;
+}
+
+.pulse-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid #10b981;
+  animation: pulse-success 2s infinite;
+}
+
+@keyframes pulse-success {
+  0% { transform: scale(0.95); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+.confirmation-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.confirmation-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.confirmation-header p {
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.booking-ref {
+  background: rgba(255,255,255,0.05);
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-full);
+  border: 1px solid var(--color-border);
+  font-size: 1.1rem;
+}
+
+.booking-ref strong {
+  letter-spacing: 2px;
+  color: var(--color-primary);
+}
+
+/* Ticket Design */
+.ticket-card {
+  width: 100%;
+  background: #1a1b23;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 3rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.ticket-header {
+  padding: 1.5rem 2rem;
+  background: rgba(0,0,0,0.2);
+  border-bottom: 2px dashed rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.airline-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.airline-name {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.flight-number {
+  color: var(--color-text-secondary);
+  font-family: monospace;
+  font-size: 1.1rem;
+}
+
+.class-badge {
+  background: var(--gradient-primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.ticket-body {
+  padding: 2rem;
+}
+
+.route-large {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.city-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.city-info.right {
+  text-align: right;
+}
+
+.city-info .time {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.city-info .city {
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.plane-graphic {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 0 2rem;
+}
+
+.dotted-line {
+  width: 100%;
+  height: 2px;
+  background-image: linear-gradient(to right, var(--color-border) 50%, transparent 50%);
+  background-size: 12px 2px;
+  background-repeat: repeat-x;
+  margin-bottom: 0.5rem;
+}
+
+.plane-graphic .duration {
+  background: var(--color-bg-base);
+  padding: 0.25rem 1rem;
+  border-radius: var(--border-radius-full);
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  position: absolute;
+  top: -12px;
+}
+
+.passenger-details-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  background: rgba(255,255,255,0.02);
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detail-item .label {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}
+
+.detail-item .value {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.ticket-footer {
+  padding: 1.5rem 2rem;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+}
+
+.barcode .bars {
+  height: 60px;
+  width: 300px;
+  background-image: 
+    linear-gradient(to right, 
+      #fff 0%, #fff 2%, transparent 2%, transparent 4%, #fff 4%, #fff 5%, 
+      transparent 5%, transparent 7%, #fff 7%, #fff 10%, transparent 10%, 
+      transparent 12%, #fff 12%, #fff 16%, transparent 16%, transparent 18%,
+      #fff 18%, #fff 20%, transparent 20%, transparent 21%, #fff 21%, #fff 25%,
+      transparent 25%, transparent 28%, #fff 28%, #fff 30%, transparent 30%, 
+      transparent 32%, #fff 32%, #fff 35%, transparent 35%, transparent 37%,
+      #fff 37%, #fff 40%, transparent 40%, transparent 42%, #fff 42%, #fff 44%,
+      transparent 44%, transparent 45%, #fff 45%, #fff 48%, transparent 48%, 
+      transparent 50%, #fff 50%, #fff 52%, transparent 52%, transparent 54%,
+      #fff 54%, #fff 58%, transparent 58%, transparent 60%, #fff 60%, #fff 62%,
+      transparent 62%, transparent 64%, #fff 64%, #fff 66%, transparent 66%,
+      transparent 68%, #fff 68%, #fff 70%, transparent 70%, transparent 72%,
+      #fff 72%, #fff 74%, transparent 74%, transparent 75%, #fff 75%, #fff 78%,
+      transparent 78%, transparent 80%, #fff 80%, #fff 82%, transparent 82%,
+      transparent 84%, #fff 84%, #fff 86%, transparent 86%, transparent 88%,
+      #fff 88%, #fff 90%, transparent 90%, transparent 92%, #fff 92%, #fff 95%,
+      transparent 95%, transparent 98%, #fff 98%, #fff 100%
+    );
+  opacity: 0.7;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .passenger-details-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .route-large {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .plane-graphic {
+    transform: rotate(90deg);
+  }
+}
+
+/* Print Styles for PDF Ticket */
+.printable-ticket {
+  display: none;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #ticket-to-print, #ticket-to-print * {
+    visibility: visible;
+  }
+  #ticket-to-print {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 600px; /* Standard ticket width */
+    color: #000;
+    background: #fff;
+    padding: 40px;
+    font-family: 'Outfit', sans-serif;
+    border: 2px solid #eee;
+    border-radius: 20px;
+  }
+  
+  @page {
+    margin: 1cm;
+    size: auto;
+  }
+
+  .print-header {
+    border-bottom: 2px solid #6366f1;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  
+  .print-header h1 {
+    color: #6366f1;
+    margin: 0;
+    font-size: 32px;
+  }
+
+  .print-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .print-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dotted #ccc;
+  }
+  
+  .print-row span {
+    color: #888;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .print-row strong {
+    font-size: 20px;
+    color: #333;
+  }
+
+  .print-footer {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 14px;
+    color: #aaa;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+  }
+}
