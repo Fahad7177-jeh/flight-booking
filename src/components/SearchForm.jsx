@@ -110,7 +110,10 @@ const SearchForm = ({ onSearch }) => {
   };
 
   return (
-    <div className="search-form-container glass-panel animate-scale-in">
+    <div className={`search-form-container glass-panel animate-scale-in ${isPassengersOpen ? 'dropdown-open' : ''}`}>
+      {/* Mobile Overlay */}
+      <div className="mobile-overlay" onClick={() => setIsPassengersOpen(false)}></div>
+      
       <form className="search-form" onSubmit={handleSubmit}>
         
         {/* From Field */}

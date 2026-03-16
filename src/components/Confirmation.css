@@ -119,141 +119,88 @@
   padding: 2rem;
 }
 
-.route-large {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 3rem;
-}
-
-.city-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.city-info.right {
-  text-align: right;
-}
-
-.city-info .time {
-  font-size: 2.5rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.city-info .city {
-  font-size: 1.2rem;
-  color: var(--color-text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.plane-graphic {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  padding: 0 2rem;
-}
-
-.dotted-line {
-  width: 100%;
-  height: 2px;
-  background-image: linear-gradient(to right, var(--color-border) 50%, transparent 50%);
-  background-size: 12px 2px;
-  background-repeat: repeat-x;
-  margin-bottom: 0.5rem;
-}
-
-.plane-graphic .duration {
-  background: var(--color-bg-base);
-  padding: 0.25rem 1rem;
-  border-radius: var(--border-radius-full);
-  font-size: 0.85rem;
-  color: var(--color-primary);
-  border: 1px solid var(--color-border);
-  position: absolute;
-  top: -12px;
-}
-
-.passenger-details-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  background: rgba(255,255,255,0.02);
-  padding: 1.5rem;
-  border-radius: 12px;
-}
-
-.detail-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.detail-item .label {
-  font-size: 0.8rem;
-  color: var(--color-text-secondary);
-  text-transform: uppercase;
-}
-
-.detail-item .value {
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-
-.ticket-footer {
-  padding: 1.5rem 2rem;
-  background: rgba(0,0,0,0.4);
-  display: flex;
-  justify-content: center;
-}
-
-.barcode .bars {
-  height: 60px;
-  width: 300px;
-  background-image: 
-    linear-gradient(to right, 
-      #fff 0%, #fff 2%, transparent 2%, transparent 4%, #fff 4%, #fff 5%, 
-      transparent 5%, transparent 7%, #fff 7%, #fff 10%, transparent 10%, 
-      transparent 12%, #fff 12%, #fff 16%, transparent 16%, transparent 18%,
-      #fff 18%, #fff 20%, transparent 20%, transparent 21%, #fff 21%, #fff 25%,
-      transparent 25%, transparent 28%, #fff 28%, #fff 30%, transparent 30%, 
-      transparent 32%, #fff 32%, #fff 35%, transparent 35%, transparent 37%,
-      #fff 37%, #fff 40%, transparent 40%, transparent 42%, #fff 42%, #fff 44%,
-      transparent 44%, transparent 45%, #fff 45%, #fff 48%, transparent 48%, 
-      transparent 50%, #fff 50%, #fff 52%, transparent 52%, transparent 54%,
-      #fff 54%, #fff 58%, transparent 58%, transparent 60%, #fff 60%, #fff 62%,
-      transparent 62%, transparent 64%, #fff 64%, #fff 66%, transparent 66%,
-      transparent 68%, #fff 68%, #fff 70%, transparent 70%, transparent 72%,
-      #fff 72%, #fff 74%, transparent 74%, transparent 75%, #fff 75%, #fff 78%,
-      transparent 78%, transparent 80%, #fff 80%, #fff 82%, transparent 82%,
-      transparent 84%, #fff 84%, #fff 86%, transparent 86%, transparent 88%,
-      #fff 88%, #fff 90%, transparent 90%, transparent 92%, #fff 92%, #fff 95%,
-      transparent 95%, transparent 98%, #fff 98%, #fff 100%
-    );
-  opacity: 0.7;
-}
-
-.action-buttons {
-  display: flex;
-  gap: 1rem;
-}
-
 @media (max-width: 768px) {
+  .confirmation-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .confirmation-header p {
+    font-size: 1rem;
+  }
+
+  .ticket-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+
+  .ticket-body {
+    padding: 1.5rem;
+  }
+
+  .city-info .time {
+    font-size: 1.8rem;
+  }
+
+  .city-info .city {
+    font-size: 1rem;
+  }
+
   .passenger-details-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
   
   .route-large {
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .city-info.right {
+    text-align: center;
   }
   
   .plane-graphic {
-    transform: rotate(90deg);
+    padding: 1rem 0;
+    width: 100%;
+    transform: none;
+  }
+
+  .dotted-line {
+    width: 60%;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .action-buttons .btn {
+    width: 100%;
+  }
+
+  .barcode .bars {
+    width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .confirmation-container {
+    padding: 1rem;
+  }
+
+  .success-icon-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .success-icon {
+    width: 48px !important;
+    height: 48px !important;
   }
 }
 

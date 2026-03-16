@@ -2,8 +2,10 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import { Bed, MapPin, Calendar, Users, ArrowRight, Plus, Minus, Star, CheckCircle } from 'lucide-react';
 import { BookingContext } from '../context/BookingContext';
 import { AuthContext } from '../context/AuthContext';
+import './HotelSearch.css';
 
 const mockHotels = [
+// ... (rest of mockHotels is the same)
   { id: 1, name: 'Grand Royal Hotel', city: 'Hyderabad', rating: 4.8, price: 150, image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=400', location: 'Banjara Hills' },
   { id: 2, name: 'Golkonda Resort', city: 'Hyderabad', rating: 4.5, price: 200, image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=400', location: 'Gandipet' },
   { id: 3, name: 'The Park Hyderabad', city: 'Hyderabad', rating: 4.6, price: 120, image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=400', location: 'Somajiguda' },
@@ -125,20 +127,20 @@ const HotelSearch = () => {
     const { adults, children, rooms } = bookingData.config;
     return `${adults} Adult${adults > 1 ? 's' : ''}, ${children} Child${children !== 1 ? 'ren' : ''} • ${rooms} Room${rooms > 1 ? 's' : ''}`;
   };
-
   return (
-    <div className="hotel-search-container animate-fade-in" style={{ padding: '2rem 0' }}>
-      <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-        <h1 className="hero-title" style={{ fontSize: '3.5rem' }}>Luxury Accommodations</h1>
+    <div className={`hotel-search-container animate-fade-in ${isConfigOpen ? 'dropdown-open' : ''}`}>
+      <div className="mobile-overlay" onClick={() => setIsConfigOpen(false)}></div>
+      <div className="hotel-hero">
+        <h1 className="hero-title">Luxury Accommodations</h1>
         <p className="hero-subtitle">Curated premium stays for the discerning traveler.</p>
       </div>
 
-      <div className="glass-panel" style={{ padding: '2rem', maxWidth: '1100px', margin: '0 auto', marginBottom: '4rem', position: 'relative', zIndex: 10 }}>
-        <form onSubmit={handleSearch} style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem', alignItems: 'flex-end' }}>
+      <div className="glass-panel hotel-search-form-card">
+        <form onSubmit={handleSearch} className="hotel-search-form">
           
           {/* Destination */}
-          <div style={{ flex: '1 1 250px', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Destination</label>
+          <div className="hotel-input-group">
+            <label>Destination</label>
             <div className="input-wrapper">
               <MapPin size={20} className="input-icon" />
               <input 
@@ -146,15 +148,14 @@ const HotelSearch = () => {
                 placeholder="Where are you going?" 
                 value={destination}
                 onChange={(e) => setDestination(e.target.value)}
-                style={{ width: '100%', paddingLeft: '3rem', height: '3.5rem' }} 
               />
             </div>
           </div>
 
           {/* Range Dates */}
-          <div style={{ flex: '1 1 350px', display: 'flex', gap: '1rem' }}>
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text-secondary)', textTransform: 'uppercase' }}>Check-in</label>
+          <div className="hotel-date-range">
+            <div className="hotel-date-input">
+              <label>Check-in</label>
               <div className="input-wrapper" onClick={() => checkInRef.current?.showPicker && checkInRef.current.showPicker()} style={{ cursor: 'pointer' }}>
                 <Calendar size={20} className="input-icon" />
                 <input 
@@ -163,12 +164,12 @@ const HotelSearch = () => {
                   value={bookingData.checkIn}
                   onChange={(e) => setBookingData({...bookingData, checkIn: e.target.value})}
                   min={new Date().toISOString().split('T')[0]}
-                  style={{ width: '100%', paddingLeft: '3rem', height: '3.5rem', cursor: 'pointer' }} 
+                  style={{ cursor: 'pointer' }}
                 />
               </div>
             </div>
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text-secondary)', textTransform: 'uppercase' }}>Check-out</label>
+            <div className="hotel-date-input">
+              <label>Check-out</label>
               <div className="input-wrapper" onClick={() => checkOutRef.current?.showPicker && checkOutRef.current.showPicker()} style={{ cursor: 'pointer' }}>
                 <Calendar size={20} className="input-icon" />
                 <input 
@@ -177,23 +178,23 @@ const HotelSearch = () => {
                   value={bookingData.checkOut}
                   onChange={(e) => setBookingData({...bookingData, checkOut: e.target.value})}
                   min={bookingData.checkIn || new Date().toISOString().split('T')[0]}
-                  style={{ width: '100%', paddingLeft: '3rem', height: '3.5rem', cursor: 'pointer' }} 
+                  style={{ cursor: 'pointer' }}
                 />
               </div>
             </div>
           </div>
 
           {/* Guests & Rooms */}
-          <div style={{ flex: '1 1 250px', display: 'flex', flexDirection: 'column', gap: '0.5rem' }} ref={configRef}>
-            <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text-secondary)', textTransform: 'uppercase' }}>Guests & Rooms</label>
+          <div className="hotel-input-group guests-rooms-group" ref={configRef}>
+            <label>Guests & Rooms</label>
             <div className="input-wrapper custom-select-wrapper" onClick={() => setIsConfigOpen(!isConfigOpen)}>
               <Users size={20} className="input-icon" />
-              <div className="custom-select-display" style={{ fontSize: '0.9rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <div className="custom-select-display">
                 {getConfigSummary()}
               </div>
               
               {isConfigOpen && (
-                <div className="custom-select-dropdown advanced-dropdown animate-fade-in" style={{ width: '320px', padding: '1.5rem', top: '100%', left: '0' }} onClick={e => e.stopPropagation()}>
+                <div className="custom-select-dropdown advanced-dropdown animate-fade-in" onClick={e => e.stopPropagation()}>
                   <div className="passenger-row" style={{ marginBottom: '1rem' }}>
                     <div className="passenger-info">
                       <span className="passenger-type">Adults</span>
@@ -233,8 +234,7 @@ const HotelSearch = () => {
 
           <button 
             type="submit" 
-            className="btn btn-primary" 
-            style={{ height: '3.5rem', padding: '0 2rem' }}
+            className="btn btn-primary search-stays-btn"
             disabled={!destination}
           >
             <ArrowRight size={20} /> Search Stays
@@ -243,52 +243,52 @@ const HotelSearch = () => {
       </div>
 
       {/* Results Area */}
-      <div className="results-container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+      <div className="hotel-results-wrapper">
         {loading && (
-          <div style={{ textAlign: 'center', padding: '5rem 0' }}>
-            <div className="radar-animation" style={{ margin: '0 auto 2rem' }}></div>
-            <p style={{ color: 'var(--color-text-secondary)', fontSize: '1.2rem' }}>Finding premium stays in <span style={{ color: 'var(--color-primary)', fontWeight: 600 }}>{destination}</span>...</p>
+          <div className="loading-state">
+            <div className="radar-spinner" style={{ margin: '0 auto 2rem' }}></div>
+            <p className="loading-text">Finding premium stays in <span style={{ color: 'var(--color-primary)', fontWeight: 600 }}>{destination}</span>...</p>
           </div>
         )}
 
         {!loading && hasSearched && (
           <div className="animate-fade-in">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+            <div className="hotel-results-header">
               <h2>{results.length} Properties found in {destination}</h2>
-              <div style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)' }}>Prices include taxes and fees</div>
+              <div className="prices-meta">Prices include taxes and fees</div>
             </div>
 
             {results.length === 0 ? (
-              <div className="glass-panel" style={{ padding: '5rem', textAlign: 'center' }}>
+              <div className="glass-panel empty-state" style={{ padding: '5rem', textAlign: 'center' }}>
                 <Bed size={48} style={{ opacity: 0.2, marginBottom: '1rem' }} />
                 <h3>No hotels found for this city</h3>
                 <p style={{ color: 'var(--color-text-secondary)' }}>Try searching for cities like "Hyderabad", "Paris", or "Tokyo".</p>
               </div>
             ) : (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '2rem' }}>
+              <div className="hotel-grid">
                 {results.map(hotel => (
                   <div key={hotel.id} className="glass-panel hotel-card animate-slide-up" style={{ overflow: 'hidden', padding: 0 }}>
-                    <div style={{ height: '220px', position: 'relative' }}>
-                      <img src={hotel.image} alt={hotel.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                      <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'rgba(15, 16, 21, 0.8)', padding: '0.5rem 0.75rem', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '0.25rem', backdropFilter: 'blur(8px)' }}>
+                    <div className="hotel-card-image-wrapper">
+                      <img src={hotel.image} alt={hotel.name} className="hotel-card-image" />
+                      <div className="hotel-rating-badge">
                         <Star size={16} fill="var(--color-primary)" color="var(--color-primary)" />
                         <span style={{ fontWeight: 700 }}>{hotel.rating}</span>
                       </div>
                     </div>
-                    <div style={{ padding: '1.5rem' }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
+                    <div className="hotel-card-content">
+                      <div className="hotel-card-header">
                         <h3 style={{ fontSize: '1.4rem' }}>{hotel.name}</h3>
-                        <div style={{ textAlign: 'right' }}>
+                        <div className="hotel-card-price">
                           <span style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--color-primary)' }}>${hotel.price}</span>
                           <div style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)' }}>per night</div>
                         </div>
                       </div>
-                      <p style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--color-text-secondary)', marginBottom: '1.5rem' }}>
+                      <p className="hotel-location-info">
                         <MapPin size={16} /> {hotel.location}, {hotel.city}
                       </p>
                       
                       {bookingStatus[hotel.id] === 'booked' ? (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#10b981', fontWeight: 600, padding: '0.75rem', background: 'rgba(16, 185, 129, 0.1)', borderRadius: '8px', justifyContent: 'center' }}>
+                        <div className="booked-status" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#10b981', fontWeight: 600, padding: '0.75rem', background: 'rgba(16, 185, 129, 0.1)', borderRadius: '8px', justifyContent: 'center' }}>
                           <CheckCircle size={20} /> Hotel Booked Successfully
                         </div>
                       ) : (
@@ -311,6 +311,7 @@ const HotelSearch = () => {
     </div>
   );
 };
+
 
 export default HotelSearch;
 

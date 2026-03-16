@@ -1,0 +1,220 @@
+.home-extras {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.deals-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.deals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.deal-card {
+  overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.deal-card:hover {
+  transform: translateY(-5px);
+}
+
+.deal-image-wrapper {
+  position: relative;
+  height: 240px;
+}
+
+.deal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.deal-tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--color-primary);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.deal-content {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deal-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.deal-info p {
+  color: var(--color-text-secondary);
+}
+
+.deal-price {
+  text-align: right;
+}
+
+.deal-price .from {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.deal-price .amount {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+}
+
+.extras-bottom-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 3rem;
+}
+
+.testimonials-section {
+  padding: 2.5rem;
+}
+
+.testimonials-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.testimonials-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.testimonial-item {
+  border-left: 3px solid var(--color-primary);
+  padding-left: 1.5rem;
+}
+
+.testimonial-text {
+  font-size: 1.1rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+  color: var(--color-text-primary);
+}
+
+.testimonial-author {
+  font-weight: 700;
+}
+
+.testimonial-role {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.newsletter-section {
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: var(--gradient-card);
+}
+
+.newsletter-icon {
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+}
+
+.newsletter-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.newsletter-section p {
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+  max-width: 300px;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.newsletter-input {
+  flex: 1;
+  height: 3.5rem;
+  border-radius: 30px;
+}
+
+.newsletter-btn {
+  border-radius: 30px;
+  padding: 0 1.5rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .home-extras {
+    margin-top: 3rem;
+    gap: 4rem;
+  }
+
+  .deals-section h2 {
+    font-size: 1.5rem;
+    justify-content: center;
+  }
+
+  .deals-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .deal-image-wrapper {
+    height: 200px;
+  }
+
+  .extras-bottom-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .testimonials-section, .newsletter-section {
+    padding: 2rem 1.5rem;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  .newsletter-btn {
+    width: 100%;
+    height: 3.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .extras-bottom-grid {
+    min-width: 0;
+  }
+}

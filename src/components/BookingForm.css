@@ -171,13 +171,45 @@
   margin-bottom: 0;
 }
 
-@media (max-width: 900px) {
-  .booking-layout {
-    grid-template-columns: 1fr;
+@media (max-width: 768px) {
+  .booking-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .booking-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .booking-form-wrapper {
+    padding: 1.5rem;
+  }
+
+  .payment-section {
+    padding: 1.25rem;
+  }
+
+  .form-section {
+    margin-bottom: 2rem;
+  }
+
+  .submit-booking-btn {
+    height: 3.5rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .booking-header .back-btn span {
+    display: none;
   }
   
-  .form-row {
-    flex-direction: column;
-    gap: 1rem;
+  .booking-header .back-btn {
+    padding: 0.5rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
   }
 }

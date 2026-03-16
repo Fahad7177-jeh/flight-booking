@@ -136,10 +136,10 @@ function App() {
             </div>
           ) : (
             <>
-              <button className="btn btn-secondary" onClick={() => handleAuthClick('signin')} style={{ padding: '0.5rem 1rem' }}>
+              <button className="btn btn-secondary nav-btn" onClick={() => handleAuthClick('signin')}>
                 <LogIn size={18} /> Sign In
               </button>
-              <button className="btn btn-primary" onClick={() => handleAuthClick('signup')} style={{ padding: '0.5rem 1rem' }}>
+              <button className="btn btn-primary nav-btn" onClick={() => handleAuthClick('signup')}>
                 <UserPlus size={18} /> Create Account
               </button>
             </>
@@ -172,7 +172,7 @@ function App() {
           <div className="flight-container">
             {flightState === 'search' && (
               <section className="hero-section animate-slide-up">
-                 <h1 className="hero-title" style={{fontSize: '3rem'}}>Find Your Flight</h1>
+                 <h1 className="hero-title flight-hero-title">Find Your Flight</h1>
                  <p className="hero-subtitle">Book flights to anywhere globally with zero hassle.</p>
                  <SearchForm onSearch={handleFlightSearch} />
               </section>

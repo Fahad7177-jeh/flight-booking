@@ -256,17 +256,79 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .search-form-container {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
   .search-form {
     flex-direction: column;
     align-items: stretch;
+    gap: 1rem;
   }
   
-  .input-group, .submit-group {
+  .input-group, .submit-group, .date-group, .passengers-group {
+    flex: 1 1 100%;
     width: 100%;
+    min-width: 0;
+  }
+
+  .input-wrapper input,
+  .input-wrapper select,
+  .custom-select-display,
+  .search-btn {
+    height: 3.25rem;
+    font-size: 1rem;
+  }
+
+  .custom-select-display {
+    padding-left: 2.75rem !important;
+  }
+
+  .input-icon {
+    left: 0.875rem;
+  }
+
+  .custom-select-dropdown {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    padding: 2rem 1.5rem;
+    z-index: 2000;
+    animation: slideUpMobile 0.4s cubic-bezier(0, 0, 0.2, 1);
   }
 
   .advanced-dropdown {
     width: 100% !important;
-    min-width: unset;
   }
+
+  /* Overlay for mobile dropdowns */
+  .mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 1500;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+
+  .dropdown-open .mobile-overlay {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@keyframes slideUpMobile {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
 }
